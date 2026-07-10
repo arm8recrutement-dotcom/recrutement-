@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARM8 - Recrutement</title>
+    <style>
+        :root {
+            --container-bg: rgba(43, 45, 49, 0.85); /* Fond Discord semi-transparent pour voir l'image derrière */
+            --input-bg: #1e1f22;
+            --accent-color: #5865F2;
+            --accent-hover: #4752C4;
+            --text-color: #f2f3f5;
+            --text-muted: #b5bac1;
+            --border-color: #3f4147;
+        }
+
+        body {
+            font-family: 'GG Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Ton image personnalisée sur tout l'écran */
+            background-image: url("https://cdn.discordapp.com/attachments/1490407191960879146/1525172419764027543/73B0B19D-DBB1-437B-B482-B1FAF8CCD409.png?ex=6a526b01&is=6a511981&hm=454a8c75c756900697f6267738bebccccc8511cd72ed15c2c5f678addefa7a97&");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background-color: var(--container-bg);
+            backdrop-filter: blur(5px); /* Effet flouté derrière le formulaire */
+            padding: 25px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            width: 100%;
+            max-width: 450px;
+            border: 1px solid var(--border-color);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .discord-logo {
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 10px rgba(88, 101, 242, 0.3);
+        }
+
+        .discord-logo svg {
+            width: 35px;
+            height: 35px;
+            fill: white;
+        }
+
+        h2 {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        input[type="text"], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            background-color: var(--input-bg);
+            color: var(--text-color);
+            box-sizing: border-box;
+            font-size: 14px;
+            outline: none;
+        }
+
+        input[type="text"]:focus, select:focus, textarea:focus {
+            box-shadow: 0 0 0 2px var(--accent-color);
+        }
+
+        select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 20px;
+        }
+
+        textarea {
+            resize: none;
+            height: 100px;
+            font-family: inherit;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            background-color: var(--accent-color);
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: var(--accent-hover);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div class="discord-logo">
+            <svg viewBox="0 0 127.14 96.36">
+                <path d="M107.7,8.07A105.15,105.15,0,0,0,77.26,0a77.19,77.19,0,0,0-3.3,6.83A96.67,96.67,0,0,0,53.22,6.83,77.19,77.19,0,0,0,49.88,0,105.15,105.15,0,0,0,19.44,8.07C3.66,31.58-1.86,54.65,1,77.53A105.73,105.73,0,0,0,32,96.36a74.37,74.37,0,0,0,6.7-10.93,68.43,68.43,0,0,1-10.59-5.07c.9-.66,1.77-1.35,2.6-2.07a75.31,75.31,0,0,0,72.7,0c.83.72,1.7,1.41,2.6,2.07a68.32,68.32,0,0,1-10.59,5.07,74.68,74.68,0,0,0,6.7,10.93,105.54,105.54,0,0,0,31.05-18.83C129.91,50.14,124.06,27.24,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53S36.18,40.36,42.45,40.36,53.92,46,53.79,53,48.72,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.24,60,73.24,53S78.41,40.36,82.69,40.36,94.16,46,94,53,89,65.69,82.69,65.69Z"/>
+            </svg>
+        </div>
+        <h2>ARM8 RECRUTEMENT</h2>
+        <div class="subtitle">Postule pour rejoindre l'équipe du serveur</div>
+    </div>
+    
+    <form id="recrutementForm">
+        
+        <div class="form-group">
+            <label for="pseudo">Pseudo Discord & ID</label>
+            <input type="text" id="pseudo" required placeholder="Ex: MonPseudo#0000 ou id">
+        </div>
+
+        <div class="form-group">
+            <label for="poste">Quel poste souhaites-tu ?</label>
+            <select id="poste" onchange="changerPoste()" required>
+                <option value="" disabled selected>Choisis une option...</option>
+                <option value="Staff">🛡️ Staff</option>
+                <option value="Animateur">🎉 Animateur</option>
+                <option value="Middleman">🤝 Middleman</option>
+            </select>
+        </div>
+
+        <!-- SECTION STAFF -->
+        <div id="sectionStaff" class="hidden">
+            <div class="form-group">
+                <label for="xpStaff">As-tu de l'expérience en tant que Staff ?</label>
+                <textarea id="xpStaff" placeholder="Détaille tes anciennes expériences..."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="motivationStaff">Quelles sont tes motivations ?</label>
+                <textarea id="motivationStaff" placeholder="Pourquoi toi et pas un autre ?"></textarea>
+            </div>
+        </div>
+
+        <!-- SECTION ANIMATEUR -->
+        <div id="sectionAnimateur" class="hidden">
+            <div class="form-group">
+                <label for="ideesAnim">Quelles idées d'événements as-tu ?</label>
+                <textarea id="ideesAnim" placeholder="Propose des idées d'animations originales..."></textarea>
+            </div>
+        </div>
+
+        <!-- SECTION MIDDLEMAN -->
+        <div id="sectionMiddleman" class="hidden">
+            <div class="form-group">
+                <label for="xpMm">Combien de transactions as-tu sécurisées ?</label>
+                <input type="text" id="xpMm" placeholder="Ex: 15 transactions, preuves dispo...">
+            </div>
+        </div>
+
+        <button type="submit">Envoyer ma candidature</button>
+    </form>
+</div>
+
+<script>
+    function changerPoste() {
+        const poste = document.getElementById('poste').value;
+        
+        const sStaff = document.getElementById('sectionStaff');
+        const sAnim = document.getElementById('sectionAnimateur');
+        const sMm = document.getElementById('sectionMiddleman');
+
+        sStaff.classList.add('hidden');
+        sAnim.classList.add('hidden');
+        sMm.classList.add('hidden');
+
+        sStaff.classList.remove('fade-in');
+        sAnim.classList.remove('fade-in');
+        sMm.classList.remove('fade-in');
+
+        if (poste === 'Staff') { sStaff.classList.remove('hidden'); sStaff.classList.add('fade-in'); }
+        if (poste === 'Animateur') { sAnim.classList.remove('hidden'); sAnim.classList.add('fade-in'); }
+        if (poste === 'Middleman') { sMm.classList.remove('hidden'); sMm.classList.add('fade-in'); }
+    }
+
+    document.getElementById('recrutementForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const monMail = "arm8.recrutement@gmail.com";
+        const pseudo = document.getElementById('pseudo').value;
+        const poste = document.getElementById('poste').value;
+        
+        let corpsMail = `Candidature de : ${pseudo}\nPoste demandé : ${poste}\n\n--- Réponses ---\n`;
+
+        if (poste === 'Staff') {
+            corpsMail += `XP Staff : ${document.getElementById('xpStaff').value}\nMotivations : ${document.getElementById('motivationStaff').value}`;
+        } else if (poste === 'Animateur') {
+            corpsMail += `Idées Animation : ${document.getElementById('ideesAnim').value}`;
+        } else if (poste === 'Middleman') {
+            corpsMail += `XP Transactions : ${document.getElementById('xpMm').value}`;
+        }
+
+        const sujet = encodeURIComponent(`Candidature ${poste} - ${pseudo}`);
+        const message = encodeURIComponent(corpsMail);
+
+        window.location.href = `mailto:${monMail}?subject=${sujet}&body=${message}`;
+    });
+</script>
+
+</body>
+</html>
+              

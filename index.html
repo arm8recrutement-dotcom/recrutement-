@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARM8 - Recrutement</title>
+    <title>ARM8 - Recrutement Complet</title>
     <style>
         :root {
-            --container-bg: rgba(43, 45, 49, 0.85); /* Fond Discord semi-transparent pour voir l'image derrière */
+            --container-bg: rgba(43, 45, 49, 0.9); /* Un poil plus opaque pour que le grand texte reste super lisible */
             --input-bg: #1e1f22;
             --accent-color: #5865F2;
             --accent-hover: #4752C4;
@@ -17,14 +17,13 @@
 
         body {
             font-family: 'GG Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* Ton image personnalisée sur tout l'écran */
             background-image: url("https://cdn.discordapp.com/attachments/1490407191960879146/1525172419764027543/73B0B19D-DBB1-437B-B482-B1FAF8CCD409.png?ex=6a526b01&is=6a511981&hm=454a8c75c756900697f6267738bebccccc8511cd72ed15c2c5f678addefa7a97&");
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             background-repeat: no-repeat;
             margin: 0;
-            padding: 10px;
+            padding: 20px 10px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -34,12 +33,12 @@
 
         .container {
             background-color: var(--container-bg);
-            backdrop-filter: blur(5px); /* Effet flouté derrière le formulaire */
-            padding: 25px 20px;
+            backdrop-filter: blur(5px);
+            padding: 30px 25px;
             border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
             width: 100%;
-            max-width: 450px;
+            max-width: 550px; /* Légèrement plus large pour les longues questions */
             border: 1px solid var(--border-color);
         }
 
@@ -57,7 +56,6 @@
             justify-content: center;
             align-items: center;
             margin-bottom: 12px;
-            box-shadow: 0 4px 10px rgba(88, 101, 242, 0.3);
         }
 
         .discord-logo svg {
@@ -68,19 +66,20 @@
 
         h2 {
             margin: 0;
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 700;
             color: var(--text-color);
+            letter-spacing: 0.5px;
         }
 
         .subtitle {
             color: var(--text-muted);
-            font-size: 13px;
+            font-size: 14px;
             margin-top: 5px;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 22px;
         }
 
         label {
@@ -91,9 +90,20 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            line-height: 1.4;
         }
 
-        input[type="text"], select, textarea {
+        .label-desc {
+            display: block;
+            font-size: 11px;
+            color: #949ba4;
+            font-weight: normal;
+            text-transform: none;
+            margin-top: 2px;
+            letter-spacing: 0;
+        }
+
+        input[type="text"], input[type="number"], select, textarea {
             width: 100%;
             padding: 12px;
             border: none;
@@ -103,9 +113,10 @@
             box-sizing: border-box;
             font-size: 14px;
             outline: none;
+            transition: box-shadow 0.2s;
         }
 
-        input[type="text"]:focus, select:focus, textarea:focus {
+        input[type="text"]:focus, input[type="number"]:focus, select:focus, textarea:focus {
             box-shadow: 0 0 0 2px var(--accent-color);
         }
 
@@ -120,7 +131,7 @@
 
         textarea {
             resize: none;
-            height: 100px;
+            height: 95px;
             font-family: inherit;
         }
 
@@ -129,26 +140,26 @@
         }
 
         .fade-in {
-            animation: fadeIn 0.3s ease-in-out;
+            animation: fadeIn 0.3s ease-in-out forwards;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-5px); }
+            from { opacity: 0; transform: translateY(-8px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         button {
             width: 100%;
-            padding: 13px;
+            padding: 14px;
             background-color: var(--accent-color);
             border: none;
             border-radius: 4px;
             color: white;
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             transition: background-color 0.2s;
-            margin-top: 10px;
+            margin-top: 15px;
         }
 
         button:hover {
@@ -166,55 +177,74 @@
             </svg>
         </div>
         <h2>ARM8 RECRUTEMENT</h2>
-        <div class="subtitle">Postule pour rejoindre l'équipe du serveur</div>
+        <div class="subtitle">Formulaire officiel de candidature</div>
     </div>
     
     <form id="recrutementForm">
         
         <div class="form-group">
-            <label for="pseudo">Pseudo Discord & ID</label>
-            <input type="text" id="pseudo" required placeholder="Ex: MonPseudo#0000 ou id">
+            <label for="pseudo">Pseudo Discord & ID Unique</label>
+            <input type="text" id="pseudo" required placeholder="Ex: MonPseudo#0000 ou 123456789012345">
         </div>
 
         <div class="form-group">
-            <label for="poste">Quel poste souhaites-tu ?</label>
+            <label for="age">Quel est votre âge ?</label>
+            <input type="number" id="age" required min="10" max="99" placeholder="Ex: 16">
+        </div>
+
+        <div class="form-group">
+            <label for="dispo">Vos disponibilités de connexion <span class="label-desc">Indiquez vos horaires en semaine et le week-end</span></label>
+            <textarea id="dispo" required placeholder="Ex: Lundi au vendredi de 17h à 22h, week-end toute la journée."></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="poste">Quel poste souhaitez-tu occuper ?</label>
             <select id="poste" onchange="changerPoste()" required>
-                <option value="" disabled selected>Choisis une option...</option>
-                <option value="Staff">🛡️ Staff</option>
-                <option value="Animateur">🎉 Animateur</option>
-                <option value="Middleman">🤝 Middleman</option>
+                <option value="" disabled selected>Choisis un rôle...</option>
+                <option value="Staff">🛡️ Staff / Modérateur</option>
+                <option value="Animateur">🎉 Animateur d'Événements</option>
+                <option value="Middleman">🤝 Middleman Sécurisé</option>
             </select>
         </div>
 
-        <!-- SECTION STAFF -->
         <div id="sectionStaff" class="hidden">
             <div class="form-group">
-                <label for="xpStaff">As-tu de l'expérience en tant que Staff ?</label>
-                <textarea id="xpStaff" placeholder="Détaille tes anciennes expériences..."></textarea>
+                <label for="xpStaff">Vos expériences dans la modération <span class="label-desc">Avez-vous déjà été staff sur d'autres serveurs Discord ?</span></label>
+                <textarea id="xpStaff" placeholder="Détaillez vos anciennes expériences et les outils de modération que vous connaissez..."></textarea>
             </div>
             <div class="form-group">
-                <label for="motivationStaff">Quelles sont tes motivations ?</label>
-                <textarea id="motivationStaff" placeholder="Pourquoi toi et pas un autre ?"></textarea>
+                <label for="motivationStaff">Quelles sont vos motivations profondes ? <span class="label-desc">Pourquoi vous et pas un autre candidat ?</span></label>
+                <textarea id="motivationStaff" placeholder="Expliquez ce que vous pouvez apporter de positif au serveur ARM8..."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="scenarioStaff">Mise en situation (Obligatoire) <span class="label-desc">Un membre commence à insulter gravement et à spammer dans le chat général alors qu'aucun admin n'est connecté. Que faites-vous précisément ?</span></label>
+                <textarea id="scenarioStaff" placeholder="Décrivez toutes les étapes de votre réaction..."></textarea>
             </div>
         </div>
 
-        <!-- SECTION ANIMATEUR -->
         <div id="sectionAnimateur" class="hidden">
             <div class="form-group">
-                <label for="ideesAnim">Quelles idées d'événements as-tu ?</label>
-                <textarea id="ideesAnim" placeholder="Propose des idées d'animations originales..."></textarea>
+                <label for="ideesAnim">Quelles idées d'événements originaux proposez-vous ? <span class="label-desc">Donnez au moins 2 exemples d'animations</span></label>
+                <textarea id="ideesAnim" placeholder="Décrivez des animations vocales ou textuelles pour dynamiser le serveur..."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="xpAnim">Avez-vous de l'expérience dans l'animation ?</label>
+                <textarea id="xpAnim" placeholder="Projets passés, serveurs animés ou outils de mini-jeux connus..."></textarea>
             </div>
         </div>
 
-        <!-- SECTION MIDDLEMAN -->
         <div id="sectionMiddleman" class="hidden">
             <div class="form-group">
-                <label for="xpMm">Combien de transactions as-tu sécurisées ?</label>
-                <input type="text" id="xpMm" placeholder="Ex: 15 transactions, preuves dispo...">
+                <label for="xpMm">Nombre de transactions sécurisées & Preuves <span class="label-desc">Décrivez votre passif en tant que tiers de confiance</span></label>
+                <textarea id="xpMm" placeholder="Ex: Déjà 20 transactions réussies, liste de vouchers dispo..."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="scenarioMm">Mise en situation Middleman <span class="label-desc">Pendant un échange, l'un des deux joueurs tente de vous mentir ou refuse de donner sa part. Comment gérez-vous la sécurité de l'échange ?</span></label>
+                <textarea id="scenarioMm" placeholder="Expliquez votre procédure de sécurité..."></textarea>
             </div>
         </div>
 
-        <button type="submit">Envoyer ma candidature</button>
+        <button type="submit">Envoyer ma candidature complète</button>
     </form>
 </div>
 
@@ -226,6 +256,7 @@
         const sAnim = document.getElementById('sectionAnimateur');
         const sMm = document.getElementById('sectionMiddleman');
 
+        // On cache tout d'abord
         sStaff.classList.add('hidden');
         sAnim.classList.add('hidden');
         sMm.classList.add('hidden');
@@ -234,6 +265,7 @@
         sAnim.classList.remove('fade-in');
         sMm.classList.remove('fade-in');
 
+        // On affiche la section correspondante avec animation
         if (poste === 'Staff') { sStaff.classList.remove('hidden'); sStaff.classList.add('fade-in'); }
         if (poste === 'Animateur') { sAnim.classList.remove('hidden'); sAnim.classList.add('fade-in'); }
         if (poste === 'Middleman') { sMm.classList.remove('hidden'); sMm.classList.add('fade-in'); }
@@ -244,19 +276,36 @@
 
         const monMail = "arm8.recrutement@gmail.com";
         const pseudo = document.getElementById('pseudo').value;
+        const age = document.getElementById('age').value;
+        const dispo = document.getElementById('dispo').value;
         const poste = document.getElementById('poste').value;
         
-        let corpsMail = `Candidature de : ${pseudo}\nPoste demandé : ${poste}\n\n--- Réponses ---\n`;
+        let corpsMail = `=========================================\n`;
+        corpsMail += `   NOUVELLE CANDIDATURE - ARM8 SERVER   \n`;
+        corpsMail += `=========================================\n\n`;
+        corpsMail += `● Pseudo Discord : ${pseudo}\n`;
+        corpsMail += `● Âge : ${age} ans\n`;
+        corpsMail += `● Disponibilités : ${dispo}\n`;
+        corpsMail += `● Poste convoité : ${poste}\n\n`;
+        corpsMail += `-----------------------------------------\n`;
+        corpsMail += `          RÉPONSES AU QUESTIONNAIRE      \n`;
+        corpsMail += `-----------------------------------------\n\n`;
 
         if (poste === 'Staff') {
-            corpsMail += `XP Staff : ${document.getElementById('xpStaff').value}\nMotivations : ${document.getElementById('motivationStaff').value}`;
+            corpsMail += `[1. Expériences en Modération] :\n${document.getElementById('xpStaff').value}\n\n`;
+            corpsMail += `[2. Motivations profondes] :\n${document.getElementById('motivationStaff').value}\n\n`;
+            corpsMail += `[3. Scénario de crise (Spam/Insultes)] :\n${document.getElementById('scenarioStaff').value}\n`;
         } else if (poste === 'Animateur') {
-            corpsMail += `Idées Animation : ${document.getElementById('ideesAnim').value}`;
+            corpsMail += `[1. Idées d'animations originales] :\n${document.getElementById('ideesAnim').value}\n\n`;
+            corpsMail += `[2. Expériences d'Animateur] :\n${document.getElementById('xpAnim').value}\n`;
         } else if (poste === 'Middleman') {
-            corpsMail += `XP Transactions : ${document.getElementById('xpMm').value}`;
+            corpsMail += `[1. Historique transactions / Preuves] :\n${document.getElementById('xpMm').value}\n\n`;
+            corpsMail += `[2. Scénario litige / Tentative d'arnaque] :\n${document.getElementById('scenarioMm').value}\n`;
         }
 
-        const sujet = encodeURIComponent(`Candidature ${poste} - ${pseudo}`);
+        corpsMail += `\n=========================================`;
+
+        const sujet = encodeURIComponent(`Candidature ${poste} - ${pseudo} (${age} ans)`);
         const message = encodeURIComponent(corpsMail);
 
         window.location.href = `mailto:${monMail}?subject=${sujet}&body=${message}`;
@@ -265,4 +314,3 @@
 
 </body>
 </html>
-              
